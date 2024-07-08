@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int binary_search(int arr[], int target, int low, int high);
-
+int non_recursive_binary_search(int arr1[], int target1, int low1, int high1);
 int main(int argc, char *argv[])
 {
     int arr[] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
 int binary_search(int arr[], int target, int low, int high)
 {
-    if (low<=high)
+    if (low <= high)
     {
         int mid = (low + high)/2;
         if (arr[mid] == target)
@@ -48,4 +48,28 @@ int binary_search(int arr[], int target, int low, int high)
     {
         return -1;
     }
+}
+
+
+int non_recursive_binary_search(int arr1[], int target1, int low1, int high1)
+{
+    //has to be a while loop
+    while (low1 <= high1)
+    {
+        
+        int mid = (low1 + high1)/2;
+        if(arr1[mid] == target1)
+        {
+            return mid;
+        }
+         else if(arr1[mid] < target1)
+        {
+            low1 = mid + 1;
+        }
+        else if(arr1[mid] > target1)
+        {
+            high1 = mid + 1;
+        }
+    }
+    return -1;
 }
