@@ -2,9 +2,11 @@
 #include <stdbool.h>
 
 #define N 10
+#define SIZE ((int) (sizeof(value) / sizeof(value[0])))
 
 void reverse_array();
 void seen_digit();
+void computing_interest();
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +14,7 @@ int main(int argc, char *argv[])
     printf("what program would you like to run?:\n");
     printf("1 - reverse_array\n");
     printf("2 - seen_digit\n");
+    printf("3 - computing_interest\n");
     scanf("%d", &choice);
     switch (choice) 
     {
@@ -20,6 +23,9 @@ int main(int argc, char *argv[])
             break;
         case 2:
             seen_digit();
+            break;
+        case 3:
+            computing_interest();
             break;
         default:
             printf("invalid choice\n");
@@ -70,5 +76,44 @@ void seen_digit()
     else 
     {
         printf("digits don't repea\n");
+    }
+}
+
+void computing_interest()
+{
+    int money;
+
+    printf("\nInsert how much money do you have:\n");
+    scanf("%d", &money);
+    //initially the money is gonna be fixed 100, late I will change it so the user puts the value
+    //the program has to take an iterest rate and number of years
+    double interest;  
+    int years;
+    double value[5];
+    printf("\nInsert interest rate in percentage:\n");
+    scanf("%lf", &interest);
+
+    printf("\nInsert numbers of year:\n");
+    scanf("%d", &years);
+
+    //next we are gonna print a table with "Years" and the five interest rates as "i,  i + 1,... i + 4"
+    //then the next 5 rows are gonna be the year and the respective value of the compound interrst at the respective rate
+    printf("Years   ");
+    for (int i = 0; i < years; i++) 
+    { 
+        printf("%.2lf%%   ", interest + i);
+        value[i] = money;
+    }
+    printf("\n");
+
+    for (int j = 1;j < years; j++) 
+    {
+        printf("%d  ", j);
+        for (int k = 0; k < SIZE; k++) 
+        {
+            value[k] += (interest + k)/100 * value[k];
+            printf("%.2lf    ", value[k]);
+        }
+        printf("\n");
     }
 }
