@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
 
 #define N 10
 #define SIZE ((int) (sizeof(value) / sizeof(value[0])))
@@ -7,6 +9,7 @@
 void reverse_array();
 void seen_digit();
 void computing_interest();
+void hand_cards();
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +18,7 @@ int main(int argc, char *argv[])
     printf("1 - reverse_array\n");
     printf("2 - seen_digit\n");
     printf("3 - computing_interest\n");
+    printf("4 - hand_cards\n");
     scanf("%d", &choice);
     switch (choice) 
     {
@@ -26,6 +30,9 @@ int main(int argc, char *argv[])
             break;
         case 3:
             computing_interest();
+            break;
+        case 4:
+            hand_cards();
             break;
         default:
             printf("invalid choice\n");
@@ -116,4 +123,37 @@ void computing_interest()
         }
         printf("\n");
     }
+}
+
+void hand_cards()
+{
+    bool in_hand[4][13] = {false};
+
+
+    char suit[] = {'c', 'e', 'o', 'p'};
+    char value[] = {'a','2','3','4','5','6','7','8'
+                   ,'9','t','j','q', 'k'};
+    int num, suits, ranks;
+
+    srand((unsigned) time(NULL));
+
+    printf("Insert number of cards in hand:");
+    scanf("%d", &num);
+    
+    printf("\n");
+    while (num > 0) 
+    {
+        suits = rand() % 4;
+        ranks = rand() % 13;
+
+        if (!in_hand[suits][ranks])
+        {
+            in_hand[suits][ranks] = true;
+            num --;
+            printf(" %c%c\n", suit[suits], value[ranks]);
+        }
+
+    }
+
+    printf("\n");
 }
