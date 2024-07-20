@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 }
 
 void reverse_array()
-{
+{// testing commits
     int arr[N];
     printf("Insert numbers into the array:\n");
     for (int j = 0; j < N; j++)
