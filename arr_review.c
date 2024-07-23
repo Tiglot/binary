@@ -59,30 +59,42 @@ void reverse_array()
 
 void seen_digit()
 {
-    long n;
-    printf("Now choose a number of your liking:");
-    scanf("%ld", &n);
-
-    bool digit_repeat[10] = {false};
-    int digit;
-    int which;
-
-    while (n > 0) 
+    //The number will be the one being checked fow repeated digits
+    int option = 1;
+    
+    while (option = 1)
     {
-        digit = n % 10;
-        if (digit_repeat[digit])
+        printf("Do you wish to insert a number?\n");
+        printf("1 - YES\n");
+        printf("Any Other Number - NO\n");
+        printf("Insert choice:");
+        scanf("%d", &option);
+        
+        if (option != 1)
             break;
-        digit_repeat[digit] = true;
-        n /= 10;
-    }
+        int digit_repeat[10] = {0};
+        
+        long n;
+        printf("Now choose a number of your liking:");
+        scanf("%ld", &n);
 
-    if (n > 0)
-    {
-        printf("Repeated digit found! %d repeats\n", digit);
-    }
-    else 
-    {
-        printf("digits don't repea\n");
+        int digit;
+
+        while (n > 0) 
+        {
+            digit = n % 10;
+            digit_repeat[digit] ++;
+            n /= 10;
+        }
+        
+        printf("digit:     ");
+        for (int i = 0;i < 10; i++) 
+            printf("%d  ", i);
+
+        printf("\nocurrences:");
+        for (int j = 0; j < 10; j++)
+            printf("%d  ", digit_repeat[j]);
+        printf("\n");
     }
 }
 
