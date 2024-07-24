@@ -10,16 +10,20 @@ void reverse_array();
 void seen_digit();
 void computing_interest();
 void hand_cards();
+void table_sum();
 
 int main(int argc, char *argv[])
 {
     int choice;
-    printf("what program would you like to run?:\n");
+    printf("what program would you like to run?\n");
     printf("1 - reverse_array\n");
     printf("2 - seen_digit\n");
     printf("3 - computing_interest\n");
     printf("4 - hand_cards\n");
+    printf("5 - table_sum\n");
+    printf("Insert choice:");
     scanf("%d", &choice);
+    printf("\n");
     switch (choice) 
     {
         case 1:
@@ -33,6 +37,9 @@ int main(int argc, char *argv[])
             break;
         case 4:
             hand_cards();
+            break;
+        case 5:
+            table_sum();
             break;
         default:
             printf("invalid choice\n");
@@ -167,5 +174,32 @@ void hand_cards()
 
     }
 
+    printf("\n");
+}
+
+void table_sum()
+{
+    int table[5][5];
+    int row_s[5] = {0};
+    int col_s[5] = {0};
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Insert row %d:", i + 1);
+        for (int j = 0; j < 5; j ++) 
+        {
+            scanf("%d", &table[i][j]);
+            row_s[i] += table[i][j];
+            col_s[j] += table[i][j];
+        }
+        printf("\n");
+    }
+    printf("Row totals: ");
+    for (int k = 0; k < 5; k++) 
+        printf("%d  ", row_s[k]);
+    printf("\n");
+    printf("Collum totals: ");
+    for (int l = 0; l < 5; l++) 
+        printf("%d  ", col_s[l]);
     printf("\n");
 }
