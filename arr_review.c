@@ -155,6 +155,7 @@ void hand_cards()
     int num, suits, ranks;
 
     srand((unsigned) time(NULL));
+    //this will make sure the seed is randomized
 
     printf("Insert number of cards in hand:");
     scanf("%d", &num);
