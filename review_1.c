@@ -32,22 +32,13 @@ int binary_search(int arr[], int target, int low, int high)
     {
         int mid = (low + high)/2;
         if (arr[mid] == target)
-        {
             return mid;
-        }
         else if(arr[mid] < target)
-        {
             return binary_search(arr, target, mid + 1, high);
-        }
         else if(arr[mid] > target)
-        {
             return binary_search(arr, target, low, mid -1);
-        }
     }
-    else 
-    {
-        return -1;
-    }
+    return -1;
 }
 
 
